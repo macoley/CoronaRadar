@@ -1,0 +1,16 @@
+{
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.suggestSelection": "first",
+  "git.autofetch": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "cSpell.words": [
+    "Bitrise",
+    "Moodup",
+    "Trello",
+    "keystore",
+    "mooduplabs",
+    "submodule"
+  ]
+}
