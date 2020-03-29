@@ -39,7 +39,8 @@ export default class FullScreenWrapper extends PureComponent<{}, IState> {
             keyboardShouldPersistTaps={'always'}
             contentInsetAdjustmentBehavior='automatic'
             onScroll={this.onStartScroll}
-            scrollEventThrottle={40}
+            // scrollEventThrottle={40}
+            scrollEventThrottle={150}
             showsVerticalScrollIndicator={false}>
             <SafeAreaView style={styles.safeArea}>
               <View style={styles.wrapper}>{this.props.children}</View>
