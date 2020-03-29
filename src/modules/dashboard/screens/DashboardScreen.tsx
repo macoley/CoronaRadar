@@ -26,18 +26,21 @@ interface IProps {
 }
 
 export default class DashboardScreen extends PureComponent<IProps> {
+  private fullScreenWrapper?: FullScreenWrapper;
   public componentDidMount() {
     this.props.navigation.setParams({
       onFocus: () => {
-        StatusBar.setBarStyle('light-content');
-        this.forceUpdate();
+        this.fullScreenWrapper?.refresh();
       },
     });
   }
 
   public render() {
     return (
-      <FullScreenWrapper>
+      <FullScreenWrapper
+        ref={ref => {
+          this.fullScreenWrapper = ref!;
+        }}>
         <View style={styles.locationWidget}>
           <View style={styles.wrapper}>
             <Text style={[styles.textHeader, styles.textLight]}>{placeholder1}</Text>
