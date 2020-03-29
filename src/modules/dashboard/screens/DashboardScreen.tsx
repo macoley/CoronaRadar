@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ImageBackground, StatusBar } from 'react-native';
 
 import FullScreenWrapper from '../organisms/FullScreenWrapper';
 import { Images } from '../../../resources';
@@ -21,7 +21,20 @@ const placeholder13 = 'Italy';
 const placeholder14 = 'Most infected';
 const placeholder15 = 'Show more';
 
-export default class DashboardScreen extends PureComponent {
+interface IProps {
+  navigation: any;
+}
+
+export default class DashboardScreen extends PureComponent<IProps> {
+  public componentDidMount() {
+    this.props.navigation.setParams({
+      onFocus: () => {
+        StatusBar.setBarStyle('light-content');
+        this.forceUpdate();
+      },
+    });
+  }
+
   public render() {
     return (
       <FullScreenWrapper>

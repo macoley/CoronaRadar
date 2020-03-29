@@ -1,15 +1,5 @@
 import React, { PureComponent } from 'react';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  View,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 
 import { Colors } from '../../../resources';
 
@@ -48,7 +38,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    minHeight: 800,
     backgroundColor: Colors.appBackground,
   },
   toolbarContent: {

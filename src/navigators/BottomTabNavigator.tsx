@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Images } from '../resources';
 import NavigationService from '../services/NavigationService';
 import DashboardScreen from '../modules/dashboard/screens/DashboardScreen';
+import SettingsScreen from '../modules/settings/screens/SettingsScreen';
 
 const styles = StyleSheet.create({
   tabBarIcon: {
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
     height: 24,
   },
   tabBar: {
-    height: 60,
+    height: 55,
     borderTopColor: 'rgba(18, 27, 116, 0.15)',
   },
 });
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
 export default createBottomTabNavigator(
   {
     [NavigationService.RouteNames.DashboardScreen]: DashboardScreen,
+    [NavigationService.RouteNames.SettingsScreen]: SettingsScreen,
   },
   {
     tabBarOptions: {
@@ -28,7 +30,15 @@ export default createBottomTabNavigator(
       activeTintColor: '#ff0660',
       inactiveTintColor: 'black',
     },
+
     defaultNavigationOptions: ({ navigation }) => ({
+      tabBarOnPress: ({ defaultHandler }) => {
+        defaultHandler();
+
+        if (navigation.state.params?.onFocus) {
+          navigation.state.params.onFocus();
+        }
+      },
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
 
@@ -36,7 +46,10 @@ export default createBottomTabNavigator(
 
         switch (routeName) {
           case NavigationService.RouteNames.DashboardScreen:
-            icon = tintColor ? Images.iconCompass : Images.iconCompass;
+            icon = Images.iconCompass;
+            break;
+          case NavigationService.RouteNames.SettingsScreen:
+            icon = Images.iconSettings;
             break;
           default:
             icon = Images.tabBarIcon;

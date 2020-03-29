@@ -28,8 +28,9 @@ export default class FullScreenWrapper extends PureComponent<{}, IState> {
       <>
         <StatusBar
           animated={true}
-          // hidden={this.state.statusBar}
-          barStyle={this.state.statusBar ? 'light-content' : 'dark-content'}
+          hidden={!this.state.statusBar}
+          // barStyle={this.state.statusBar ? 'light-content' : 'dark-content'}
+          barStyle={'light-content'}
           backgroundColor={'transparent'}
           translucent={true}
         />
@@ -40,7 +41,7 @@ export default class FullScreenWrapper extends PureComponent<{}, IState> {
             contentInsetAdjustmentBehavior='automatic'
             onScroll={this.onStartScroll}
             // scrollEventThrottle={40}
-            scrollEventThrottle={150}
+            scrollEventThrottle={40}
             showsVerticalScrollIndicator={false}>
             <SafeAreaView style={styles.safeArea}>
               <View style={styles.wrapper}>{this.props.children}</View>
@@ -55,19 +56,11 @@ export default class FullScreenWrapper extends PureComponent<{}, IState> {
     if (event.nativeEvent.contentOffset.y < 300) {
       this.setState({
         backgroundColor: '#614ad3',
+        statusBar: event.nativeEvent.contentOffset.y < 20,
       });
     } else {
       this.setState({
         backgroundColor: 'white',
-      });
-    }
-
-    if (event.nativeEvent.contentOffset.y < 400) {
-      this.setState({
-        statusBar: true,
-      });
-    } else {
-      this.setState({
         statusBar: false,
       });
     }

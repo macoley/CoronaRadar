@@ -7,7 +7,7 @@ import {
   StackActions,
 } from 'react-navigation';
 
-let navigator: NavigationContainerComponent | null;
+let navigator: NavigationContainerComponent | null = null;
 
 function setTopLevelNavigator(ref: NavigationContainerComponent | null): void {
   navigator = ref;
@@ -68,6 +68,7 @@ enum RouteNames {
 
   DashboardScreen = 'DashboardScreen',
   CitiesScreen = 'CitiesScreen',
+  SettingsScreen = 'SettingsScreen',
 
   SplashScreen = 'SplashScreen',
   WelcomeScreen = 'WelcomeScreen',
@@ -79,4 +80,5 @@ export default {
   navigate,
   push,
   setTopLevelNavigator,
+  navigator,
 };
