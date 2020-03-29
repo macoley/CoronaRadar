@@ -20,7 +20,7 @@ export default class SettingsScreen extends PureComponent<IProps> {
   public componentDidMount() {
     this.props.navigation.setParams({
       onFocus: () => {
-        StatusBar.setHidden(false);
+        StatusBar.setBarStyle('dark-content');
       },
     });
   }

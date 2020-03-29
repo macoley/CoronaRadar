@@ -12,11 +12,11 @@ const placeholder14 = 'Most infected';
 
 export default class CitiesScreen extends PureComponent {
   public componentDidMount() {
-    StatusBar.setHidden(false);
+    StatusBar.setBarStyle('dark-content');
   }
 
   public componentWillUnmount() {
-    StatusBar.setHidden(true);
+    StatusBar.setBarStyle('light-content');
   }
 
   public render() {

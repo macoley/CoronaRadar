@@ -29,7 +29,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
   public componentDidMount() {
     this.props.navigation.setParams({
       onFocus: () => {
-        StatusBar.setHidden(true);
+        StatusBar.setBarStyle('light-content');
       },
     });
   }

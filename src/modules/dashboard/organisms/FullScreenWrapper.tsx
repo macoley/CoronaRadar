@@ -27,7 +27,13 @@ export default class FullScreenWrapper extends PureComponent<{}, IState> {
 
     return (
       <>
-        <StatusBar animated={true} hidden={true} backgroundColor={'transparent'} translucent={true} />
+        <StatusBar
+          animated={true}
+          hidden={false}
+          barStyle={'light-content'}
+          backgroundColor={'transparent'}
+          translucent={true}
+        />
         <KeyboardAvoidingView style={styles.container} behavior={keyboardBehavior}>
           <ScrollView
             style={[styles.scrollView, { backgroundColor: this.state.backgroundColor }]}
