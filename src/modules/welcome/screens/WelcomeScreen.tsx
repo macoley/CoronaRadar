@@ -7,12 +7,13 @@ import { SafeAreaView, ScrollView } from 'react-navigation';
 
 import { Styles } from '../../../resources';
 
+const text = 'Welcome';
 export default class WelcomeScreen extends PureComponent {
   public render() {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <Text style={styles.headerText} />
+          <Text style={styles.headerText}>{text}</Text>
         </ScrollView>
       </SafeAreaView>
     );
