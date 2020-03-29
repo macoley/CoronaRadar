@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ImageBackground } from
 
 import FullScreenWrapper from '../organisms/FullScreenWrapper';
 import { Images } from '../../../resources';
+import NavigationService from '../../../services/NavigationService';
 
-const placeholder1 = 'Your monitor location';
+const placeholder1 = 'Location you\nmonitor';
 const placeholder2 = 'Poland';
 const placeholder3 = 'Change';
 const placeholder4 = 'Total comfirmed';
@@ -15,7 +16,10 @@ const placeholder8 = 'Death';
 const placeholder9 = 'Global statistics';
 const placeholder10 = 'Total';
 const placeholder11 = 'Live';
-const placeholder = 'Dashboard';
+const placeholder12 = 'Confirmed cases by country';
+const placeholder13 = 'Italy';
+const placeholder14 = 'Most infected';
+const placeholder15 = 'Show more';
 
 export default class DashboardScreen extends PureComponent {
   public render() {
@@ -119,9 +123,49 @@ export default class DashboardScreen extends PureComponent {
             </View>
           </View>
         </View>
+        {/* CONFIRMED BY COUNTRY */}
+        <View style={[styles.wrapper, styles.section, styles.lastSection]}>
+          <View style={styles.row}>
+            {/* TODO: Animation pulse */}
+            <View style={[styles.iconLive]}>
+              <View style={styles.iconLiveBigger} />
+              <View style={styles.iconLiveSmaller} />
+            </View>
+            <Text style={[styles.textBold, styles.textRed]}>{placeholder11}</Text>
+          </View>
+          <Text style={[styles.textHeader, styles.textDark]}>{placeholder12}</Text>
+          <View style={styles.sectionWrapper}>
+            <View style={[styles.listRow, styles.listRowRed]}>
+              <Text style={[styles.textBold, styles.textLight]}>{placeholder13}</Text>
+              <Text style={[styles.textBold, styles.textLight]}>{placeholder14}</Text>
+              <Text style={[styles.textBold, styles.textLight]}>{placeholder5}</Text>
+            </View>
+            <View style={styles.listRow}>
+              <Text style={[styles.textBold, styles.textDark]}>{placeholder13}</Text>
+              <Text style={[styles.textBold, styles.textRed]}>{placeholder5}</Text>
+            </View>
+            <View style={styles.listRow}>
+              <Text style={[styles.textBold, styles.textDark]}>{placeholder13}</Text>
+              <Text style={[styles.textBold, styles.textRed]}>{placeholder5}</Text>
+            </View>
+            <View style={styles.listRow}>
+              <Text style={[styles.textBold, styles.textDark]}>{placeholder13}</Text>
+              <Text style={[styles.textBold, styles.textRed]}>{placeholder5}</Text>
+            </View>
+          </View>
+          <TouchableOpacity onPress={this.onPressCitiesButton}>
+            <View style={styles.borderedButton}>
+              <Text style={[styles.textCaption, styles.textRed]}>{placeholder15}</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </FullScreenWrapper>
     );
   }
+
+  private onPressCitiesButton = () => {
+    NavigationService.navigate(NavigationService.RouteNames.CitiesScreen);
+  };
 }
 
 const styles = StyleSheet.create({
@@ -283,5 +327,32 @@ const styles = StyleSheet.create({
   },
   boxWide: {
     height: 88,
+  },
+  sectionWrapper: {
+    marginVertical: 16,
+  },
+  listRow: {
+    marginVertical: 8,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    backgroundColor: '#f5f7fa',
+    borderRadius: 8,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  listRowRed: {
+    backgroundColor: '#ff0660',
+  },
+  borderedButton: {
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ff0660',
+    height: 48,
+    paddingHorizontal: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  lastSection: {
+    marginBottom: 48,
   },
 });

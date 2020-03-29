@@ -13,4 +13,6 @@ export const Images: { [index: string]: ImageSourcePropType } = {
   iconHeal: require(path + 'heal_icon.png'),
   iconMedicine: require(path + 'medicine_icon.png'),
   iconSkull: require(path + 'skull_icon.png'),
+  iconCompass: require(path + 'compass.png'),
+  arrowLeft: require(path + 'arrow_left.png'),
 };

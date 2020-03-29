@@ -67,6 +67,7 @@ enum RouteNames {
   AppNavigator = 'AppNavigator',
 
   DashboardScreen = 'DashboardScreen',
+  CitiesScreen = 'CitiesScreen',
 
   SplashScreen = 'SplashScreen',
   WelcomeScreen = 'WelcomeScreen',
