@@ -4,14 +4,11 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import { Images } from '../resources';
 import NavigationService from '../services/NavigationService';
-import WelcomeScreen from '../modules/welcome/screens/WelcomeScreen';
+import DashboardScreen from '../modules/dashboard/screens/DashboardScreen';
 
 export default createBottomTabNavigator(
   {
-    [NavigationService.RouteNames.WelcomeScreen]: WelcomeScreen,
-    [NavigationService.RouteNames.WelcomeScreen]: WelcomeScreen,
-    [NavigationService.RouteNames.WelcomeScreen]: WelcomeScreen,
-    [NavigationService.RouteNames.WelcomeScreen]: WelcomeScreen,
+    [NavigationService.RouteNames.DashboardScreen]: DashboardScreen,
   },
   {
     tabBarOptions: {

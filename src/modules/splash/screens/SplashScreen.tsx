@@ -6,8 +6,9 @@ import NavigationService from '../../../services/NavigationService';
 
 export default class SplashScreen extends PureComponent {
   public componentDidMount() {
-    // Todo
-    NavigationService.navigate(NavigationService.RouteNames.AppNavigator);
+    setTimeout(() => {
+      NavigationService.navigate(NavigationService.RouteNames.AppNavigator);
+    }, 300);
   }
 
   public render() {

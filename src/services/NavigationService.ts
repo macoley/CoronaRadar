@@ -30,6 +30,7 @@ function navigate(routeNameOrOptions: string | NavigationOptions): boolean {
   }
 
   let payload: NavigationNavigateActionPayload = { routeName: '' };
+
   if (typeof routeNameOrOptions === 'string') {
     payload.routeName = routeNameOrOptions;
   } else {
@@ -62,10 +63,13 @@ function goBack(options?: NavigationBackActionPayload): boolean {
 }
 
 enum RouteNames {
-  SplashScreen = 'SplashScreen',
-  WelcomeScreen = 'WelcomeScreen',
   BottomTabNavigator = 'BottomTabNavigator',
   AppNavigator = 'AppNavigator',
+
+  DashboardScreen = 'DashboardScreen',
+
+  SplashScreen = 'SplashScreen',
+  WelcomeScreen = 'WelcomeScreen',
 }
 
 export default {
