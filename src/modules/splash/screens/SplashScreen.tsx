@@ -2,10 +2,12 @@ import React, { PureComponent } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
 import { Images } from '../../../resources';
+import NavigationService from '../../../services/NavigationService';
 
 export default class SplashScreen extends PureComponent {
   public componentDidMount() {
     // Todo
+    NavigationService.navigate(NavigationService.RouteNames.WelcomeScreen);
   }
 
   public render() {
