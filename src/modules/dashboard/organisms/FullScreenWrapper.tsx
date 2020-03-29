@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-    backgroundColor: 'blue',
+    backgroundColor: '#614ad3',
   },
   safeArea: {
     flex: 1,
