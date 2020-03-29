@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, StatusBar, TouchableOpacity } from 'react-native';
 
 import FullScreenWrapper from '../organisms/FullScreenWrapper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Images } from '../../../resources';
 import NavigationService from '../../../services/NavigationService';
 
@@ -12,6 +11,14 @@ const placeholder13 = 'Italy';
 const placeholder14 = 'Most infected';
 
 export default class CitiesScreen extends PureComponent {
+  public componentDidMount() {
+    StatusBar.setHidden(false);
+  }
+
+  public componentWillUnmount() {
+    StatusBar.setHidden(true);
+  }
+
   public render() {
     return (
       <FullScreenWrapper>
