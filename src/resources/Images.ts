@@ -16,4 +16,7 @@ export const Images: { [index: string]: ImageSourcePropType } = {
   iconCompass: require(path + 'compass.png'),
   iconSettings: require(path + 'settings.png'),
   arrowLeft: require(path + 'arrow_left.png'),
+  welcome: require(path + 'welcome.png'),
+  window: require(path + 'window.png'),
+  iconDropdown: require(path + 'dropdown_icon.png'),
 };

@@ -41,7 +41,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
           <View style={styles.wrapper}>
             <Text style={[styles.textHeader, styles.textLight]}>{placeholder1}</Text>
             <Text style={[styles.textSubheader, styles.textSpace, styles.textLight]}>{placeholder2}</Text>
-            <TouchableOpacity style={styles.anchorContainer}>
+            <TouchableOpacity onPress={this.onChangeLocationPress} style={styles.anchorContainer}>
               <View style={styles.anchor}>
                 <Text style={[styles.textMedium, styles.textLight]}>{placeholder3}</Text>
               </View>
@@ -174,6 +174,10 @@ export default class DashboardScreen extends PureComponent<IProps> {
       </FullScreenWrapper>
     );
   }
+
+  private onChangeLocationPress = () => {
+    NavigationService.navigate(NavigationService.RouteNames.LocationScreen);
+  };
 
   private onPressCitiesButton = () => {
     NavigationService.navigate(NavigationService.RouteNames.CitiesScreen);

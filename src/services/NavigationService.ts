@@ -6,6 +6,7 @@ import {
   NavigationPushActionPayload,
   StackActions,
 } from 'react-navigation';
+import AppNavigator from '../navigators/AppNavigator';
 
 let navigator: NavigationContainerComponent | null = null;
 
@@ -69,6 +70,7 @@ enum RouteNames {
   DashboardScreen = 'DashboardScreen',
   CitiesScreen = 'CitiesScreen',
   SettingsScreen = 'SettingsScreen',
+  LocationScreen = 'LocationScreen',
 
   SplashScreen = 'SplashScreen',
   WelcomeScreen = 'WelcomeScreen',

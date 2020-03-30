@@ -1,25 +1,38 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Platform } from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
 
-import FullScreenWrapper from '../organisms/FullScreenWrapper';
+import FullScreenWrapper from '../../welcome/organisms/FullScreenWrapper';
 import { Images } from '../../../resources';
 import NavigationService from '../../../services/NavigationService';
 
-const placeholder1 = 'Track the spread\nof the Coronavirus';
-const placeholder13 =
-  'Explore where you are at risk the most. Stay informed with the latest data about your country and the other parts of the world.';
-const placeholder14 = 'Get started';
+const placeholder1 = 'Select country\nto monitor';
+const placeholder14 = 'Continue';
 
-export default class WelcomeScreen extends PureComponent {
+export default class LocationScreen extends PureComponent {
   public render() {
     return (
       <FullScreenWrapper>
         <View style={[styles.wrapper]}>
-          <Image style={styles.image} resizeMode={'contain'} source={Images.welcome} />
+          <Image style={styles.image} resizeMode={'contain'} source={Images.window} />
           <View>
             <Text style={[styles.textHeader, styles.textDark]}>{placeholder1}</Text>
-            <View style={styles.sectionWrapper}>
-              <Text style={[styles.textRegular, styles.textGray]}>{placeholder13} </Text>
+            <View style={[styles.sectionWrapper, styles.pickerWrapper]}>
+              <RNPickerSelect
+                useNativeAndroidPickerStyle={false}
+                textInputProps={{ style: styles.picker }}
+                onValueChange={value => console.log(value)}
+                style={{
+                  iconContainer: styles.iconContainer,
+                }}
+                placeholder={{ label: 'Choose your country', value: null, color: 'rgba(18, 27, 116, 0.2)' }}
+                Icon={this.DropdownIcon}
+                items={[
+                  { label: 'Football', value: 'football' },
+                  { label: 'Baseball', value: 'baseball' },
+                  { label: 'Hockey', value: 'hockey' },
+                ]}
+              />
             </View>
             <TouchableOpacity onPress={this.onButtonPress}>
               <View style={styles.button}>
@@ -32,12 +45,34 @@ export default class WelcomeScreen extends PureComponent {
     );
   }
 
+  private DropdownIcon = () => <Image style={styles.dropdownIcon} source={Images.iconDropdown} />;
+
   private onButtonPress = () => {
-    NavigationService.navigate(NavigationService.RouteNames.LocationScreen);
+    NavigationService.navigate(NavigationService.RouteNames.BottomTabNavigator);
   };
 }
 
 const styles = StyleSheet.create({
+  dropdownIcon: {},
+  pickerWrapper: {
+    marginTop: 48,
+  },
+  iconContainer: {
+    bottom: 0,
+    top: 0,
+    justifyContent: 'center',
+    right: 16,
+  },
+  picker: {
+    // backgroundColor: 'white',
+    borderColor: 'rgba(18, 27, 116, 0.2)',
+    borderWidth: 1,
+    height: 48,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    color: '#121b74',
+    // marginTop: 24,
+  },
   button: {
     backgroundColor: '#ff0660',
     paddingHorizontal: 32,
@@ -45,7 +80,7 @@ const styles = StyleSheet.create({
     height: 48,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 32,
+    marginTop: 24,
   },
   image: {
     flex: 1,
