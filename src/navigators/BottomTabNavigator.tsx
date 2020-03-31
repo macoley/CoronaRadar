@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import { Images } from '../resources';
 import NavigationService from '../services/NavigationService';
-import DashboardScreen from '../modules/dashboard/screens/DashboardScreen';
+import DashboardContainer from '../modules/dashboard/containers/DashboardContainer';
 import SettingsScreen from '../modules/settings/screens/SettingsScreen';
 
 const styles = StyleSheet.create({
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 
 export default createBottomTabNavigator(
   {
-    [NavigationService.RouteNames.DashboardScreen]: DashboardScreen,
+    [NavigationService.RouteNames.DashboardScreen]: DashboardContainer,
     [NavigationService.RouteNames.SettingsScreen]: SettingsScreen,
   },
   {

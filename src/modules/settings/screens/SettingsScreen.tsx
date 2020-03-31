@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, StatusBar, Linking, Platform } from 'react-native';
 
-import FullScreenWrapper from '../../cities/organisms/FullScreenWrapper';
+import FullScreenWrapper from '../../countries/organisms/FullScreenWrapper';
 
 const appEmail = 'coronaradarapp@gmail.com';
 const changelogUrl = 'https://changelogfy.com/corona-radar/announcements';

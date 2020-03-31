@@ -1,1 +1,1 @@
-export * from './ExampleEpic';
+export * from './DataEpic';

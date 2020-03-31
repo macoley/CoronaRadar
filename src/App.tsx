@@ -3,7 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import AppScreen from './modules/app/screens/AppScreen';
+import AppScreenContainer from './modules/app/containers/AppScreenContainer';
 import { persistor, store } from './redux/store/Store';
 
 export default class App extends React.PureComponent<{}, {}> {
@@ -17,7 +17,7 @@ export default class App extends React.PureComponent<{}, {}> {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <AppScreen />
+          <AppScreenContainer />
         </PersistGate>
       </Provider>
     );

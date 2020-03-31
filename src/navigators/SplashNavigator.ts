@@ -18,7 +18,7 @@ export default createAppContainer(
       [NavigationService.RouteNames.LoadingScreen]: LoadingScreen,
     },
     {
-      initialRouteName: NavigationService.RouteNames.LoadingScreen,
+      initialRouteName: NavigationService.RouteNames.SplashScreen,
     },
   ),
 );

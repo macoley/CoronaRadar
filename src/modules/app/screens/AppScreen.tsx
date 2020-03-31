@@ -4,7 +4,10 @@ import { AppState } from 'react-native';
 import SplashNavigator from '../../../navigators/SplashNavigator';
 import NavigationService from '../../../services/NavigationService';
 
-interface IProps {}
+interface IProps {
+  getSummary: () => void;
+  getLiveCountry: () => void;
+}
 
 interface IState {
   readonly appState: string;
@@ -20,6 +23,8 @@ export default class AppScreen extends React.PureComponent<IProps, IState> {
 
   public componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange);
+    this.props.getSummary();
+    this.props.getLiveCountry();
   }
 
   public componentWillUnmount() {

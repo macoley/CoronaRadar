@@ -1,5 +1,5 @@
-import { ExampleBranch } from './ExampleBranch';
+import { DataBranch } from './DataBranch';
 
 export class StoreState {
-  constructor(readonly exampleBranch: ExampleBranch) {}
+  constructor(readonly dataBranch: DataBranch) {}
 }
