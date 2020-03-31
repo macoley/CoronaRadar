@@ -4,13 +4,32 @@ import RNPickerSelect from 'react-native-picker-select';
 
 import FullScreenWrapper from '../../welcome/organisms/FullScreenWrapper';
 import { Images } from '../../../resources';
-import NavigationService from '../../../services/NavigationService';
 import Shadow from '../../../utilities/Shadow';
+import { Location } from '../../../models/Location';
+import { Country } from '../../../models/Country';
 
 const placeholder1 = 'Select country\nto monitor';
 const placeholder14 = 'Continue';
 
-export default class LocationScreen extends PureComponent {
+interface IState {
+  chosen: string | null;
+}
+
+interface IProps {
+  countries: Country[];
+  determined?: Location;
+  chooseCountry: (countrySlug: string) => void;
+}
+
+export default class ChangeLocationScreen extends PureComponent<IProps, IState> {
+  public state = {
+    chosen: null,
+  };
+
+  public componentDidMount() {
+    const _promise = this.chooseDetermined();
+  }
+
   public render() {
     return (
       <FullScreenWrapper>
@@ -20,19 +39,19 @@ export default class LocationScreen extends PureComponent {
             <Text style={[styles.textHeader, styles.textDark]}>{placeholder1}</Text>
             <View style={[styles.sectionWrapper, styles.pickerWrapper]}>
               <RNPickerSelect
+                value={this.state.chosen ?? null}
                 useNativeAndroidPickerStyle={false}
                 textInputProps={{ style: styles.picker }}
-                onValueChange={value => console.log(value)}
+                onValueChange={this.onChoose}
                 style={{
                   iconContainer: styles.iconContainer,
                 }}
                 placeholder={{ label: 'Choose your country', value: null, color: 'rgba(18, 27, 116, 0.2)' }}
                 Icon={this.DropdownIcon}
-                items={[
-                  { label: 'Football', value: 'football' },
-                  { label: 'Baseball', value: 'baseball' },
-                  { label: 'Hockey', value: 'hockey' },
-                ]}
+                items={this.props.countries.map(country => ({
+                  label: country.country,
+                  value: country.countrySlug,
+                }))}
               />
             </View>
             <TouchableOpacity onPress={this.onButtonPress}>
@@ -46,10 +65,31 @@ export default class LocationScreen extends PureComponent {
     );
   }
 
+  private onChoose = (chosen: string) => {
+    this.setState({
+      chosen,
+    });
+  };
+
+  private chooseDetermined = () => {
+    if (!this.props.determined) {
+      return;
+    }
+
+    const found = this.props.countries.find(country => country.country === this.props.determined?.country);
+    if (found) {
+      this.setState({ chosen: found.countrySlug });
+    }
+  };
+
   private DropdownIcon = () => <Image style={styles.dropdownIcon} source={Images.iconDropdown} />;
 
   private onButtonPress = () => {
-    NavigationService.navigate(NavigationService.RouteNames.BottomTabNavigator);
+    if (!this.state.chosen) {
+      return;
+    }
+
+    this.props.chooseCountry(this.state.chosen!);
   };
 }
 

@@ -7,6 +7,7 @@ import NavigationService from '../../../services/NavigationService';
 interface IProps {
   getSummary: () => void;
   getLiveCountry: () => void;
+  getCountries: () => void;
 }
 
 interface IState {
@@ -25,6 +26,7 @@ export default class AppScreen extends React.PureComponent<IProps, IState> {
     AppState.addEventListener('change', this.handleAppStateChange);
     this.props.getSummary();
     this.props.getLiveCountry();
+    this.props.getCountries();
   }
 
   public componentWillUnmount() {

@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 
 import { StoreState } from '../../../redux/branches/StoreState';
 import AppScreen from '../screens/AppScreen';
-import { getSummaryStart, getLiveCountryStart } from '../../../redux/actions';
+import { getSummaryStart, getLiveCountryStart, getCountriesStart } from '../../../redux/actions';
 
 function mapState({}: StoreState) {
   return {};
@@ -16,6 +16,9 @@ function mapDispatch(dispatch: Dispatch) {
     },
     getLiveCountry: () => {
       dispatch(getLiveCountryStart());
+    },
+    getCountries: () => {
+      dispatch(getCountriesStart());
     },
   };
 }

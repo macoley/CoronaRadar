@@ -24,5 +24,4 @@ export const moveToChangeLocationScreen = () => action(ActionTypes.ChangeLocatio
 export const moveToDashboardScreen = () => action(ActionTypes.DashboardScreen);
 
 // Chosing country
-export const chooseCountryStart = (payload: { countrySlug: string }) => action(ActionTypes.DashboardScreen);
-export const chooseCountryEnd = (payload: { countrySlug: string }) => action(ActionTypes.DashboardScreen);
+export const chooseCountry = (payload: { countrySlug: string }) => action(ActionTypes.ChooseCountry, payload);

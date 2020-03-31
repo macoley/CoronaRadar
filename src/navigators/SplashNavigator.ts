@@ -5,8 +5,8 @@ import NavigationService from '../services/NavigationService';
 import SplashScreen from '../modules/splash/screens/SplashScreen';
 import AppNavigator from './AppNavigator';
 import WelcomeScreen from '../modules/welcome/screens/WelcomeScreen';
-import LocationScreen from '../modules/location/screens/LocationScreen';
 import LoadingScreen from '../modules/loading/screens/LoadingScreen';
+import ChangeLocationContainer from '../modules/change-location/containers/ChangeLocationContainer';
 
 export default createAppContainer(
   createAnimatedSwitchNavigator(
@@ -14,7 +14,7 @@ export default createAppContainer(
       [NavigationService.RouteNames.SplashScreen]: SplashScreen,
       [NavigationService.RouteNames.AppNavigator]: AppNavigator,
       [NavigationService.RouteNames.WelcomeScreen]: WelcomeScreen,
-      [NavigationService.RouteNames.LocationScreen]: LocationScreen,
+      [NavigationService.RouteNames.ChangeLocationScreen]: ChangeLocationContainer,
       [NavigationService.RouteNames.LoadingScreen]: LoadingScreen,
     },
     {

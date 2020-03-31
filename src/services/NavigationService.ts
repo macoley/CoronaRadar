@@ -70,7 +70,7 @@ enum RouteNames {
   DashboardScreen = 'DashboardScreen',
   CountriesScreen = 'CountriesScreen',
   SettingsScreen = 'SettingsScreen',
-  LocationScreen = 'LocationScreen',
+  ChangeLocationScreen = 'ChangeLocationScreen',
   LoadingScreen = 'LoadingScreen',
 
   SplashScreen = 'SplashScreen',

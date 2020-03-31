@@ -34,7 +34,7 @@ export default class WelcomeScreen extends PureComponent {
   }
 
   private onButtonPress = () => {
-    NavigationService.navigate(NavigationService.RouteNames.LocationScreen);
+    NavigationService.navigate(NavigationService.RouteNames.ChangeLocationScreen);
   };
 }
 

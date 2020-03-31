@@ -14,5 +14,5 @@ export enum ActionTypes {
   ChangeLocationScreen = 'move_change_location_screen',
   DashboardScreen = 'move_dashboard',
 
-  ChooseCountry = 'choose_country',
+  ChooseCountry = 'choose_country_start',
 }
