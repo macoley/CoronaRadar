@@ -3,6 +3,7 @@ import { Image, StyleSheet, View } from 'react-native';
 
 import { Images } from '../../../resources';
 import NavigationService from '../../../services/NavigationService';
+import FullScreenWrapper from '../../welcome/organisms/FullScreenWrapper';
 
 export default class SplashScreen extends PureComponent {
   public componentDidMount() {
@@ -13,9 +14,11 @@ export default class SplashScreen extends PureComponent {
 
   public render() {
     return (
-      <View style={styles.container}>
-        <Image style={styles.image} source={Images.logo} />
-      </View>
+      <FullScreenWrapper>
+        <View style={styles.container}>
+          <Image style={styles.image} source={Images.logo} />
+        </View>
+      </FullScreenWrapper>
     );
   }
 }

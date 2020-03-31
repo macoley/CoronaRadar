@@ -5,6 +5,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import FullScreenWrapper from '../../welcome/organisms/FullScreenWrapper';
 import { Images } from '../../../resources';
 import NavigationService from '../../../services/NavigationService';
+import Shadow from '../../../utilities/Shadow';
 
 const placeholder1 = 'Select country\nto monitor';
 const placeholder14 = 'Continue';
@@ -81,6 +82,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 24,
+
+    ...Shadow('#ff0660'),
   },
   image: {
     flex: 1,

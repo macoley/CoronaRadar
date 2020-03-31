@@ -71,6 +71,7 @@ enum RouteNames {
   CitiesScreen = 'CitiesScreen',
   SettingsScreen = 'SettingsScreen',
   LocationScreen = 'LocationScreen',
+  LoadingScreen = 'LoadingScreen',
 
   SplashScreen = 'SplashScreen',
   WelcomeScreen = 'WelcomeScreen',

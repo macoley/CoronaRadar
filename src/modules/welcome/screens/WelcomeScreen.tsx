@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import FullScreenWrapper from '../organisms/FullScreenWrapper';
 import { Images } from '../../../resources';
 import NavigationService from '../../../services/NavigationService';
+import Shadow from '../../../utilities/Shadow';
 
 const placeholder1 = 'Track the spread\nof the Coronavirus';
 const placeholder13 =
@@ -46,6 +47,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 32,
+
+    ...Shadow('#ff0660'),
   },
   image: {
     flex: 1,

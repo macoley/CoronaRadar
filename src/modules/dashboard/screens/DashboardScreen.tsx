@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ImageBackground, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, StatusBar } from 'react-native';
 
 import FullScreenWrapper from '../organisms/FullScreenWrapper';
 import { Images } from '../../../resources';
 import NavigationService from '../../../services/NavigationService';
+import Shadow from '../../../utilities/Shadow';
 
 const placeholder1 = 'Location you\nmonitor';
 const placeholder2 = 'Poland';
@@ -292,6 +293,8 @@ const styles = StyleSheet.create({
     padding: 12,
     alignItems: 'center',
     justifyContent: 'space-between',
+
+    ...Shadow('rgba(45, 36, 138, 0.1)'),
   },
   boxAmount: {
     backgroundColor: '#f5f7fa',
