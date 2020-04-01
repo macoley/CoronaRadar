@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Platform } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Platform, StatusBar } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 
 import FullScreenWrapper from '../../welcome/organisms/FullScreenWrapper';
@@ -28,6 +28,11 @@ export default class ChangeLocationScreen extends PureComponent<IProps, IState> 
 
   public componentDidMount() {
     const _promise = this.chooseDetermined();
+    StatusBar.setBarStyle('dark-content');
+  }
+
+  public componentWillUnmount() {
+    StatusBar.setBarStyle('light-content');
   }
 
   public render() {

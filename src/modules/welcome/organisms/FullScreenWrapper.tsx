@@ -13,18 +13,27 @@ export default class FullScreenWrapper extends PureComponent<IProps> {
 
     return (
       <>
-        <StatusBar hidden={false} barStyle={'dark-content'} backgroundColor={'transparent'} translucent={true} />
+        <StatusBar
+          hidden={false}
+          barStyle={'dark-content'}
+          backgroundColor={this.props.backgroundColor ? this.props.backgroundColor : 'white'}
+          translucent={this.props.backgroundColor === undefined}
+        />
         <KeyboardAvoidingView
           style={[
             styles.container,
-            this.props.backgroundColor ? { backgroundColor: this.props.backgroundColor } : null,
+            { backgroundColor: this.props.backgroundColor ? this.props.backgroundColor : 'white' },
           ]}
           behavior={keyboardBehavior}>
-          <SafeAreaView style={styles.safeArea}>
+          <SafeAreaView
+            style={[
+              styles.safeArea,
+              { backgroundColor: this.props.backgroundColor ? this.props.backgroundColor : 'white' },
+            ]}>
             <View
               style={[
                 styles.wrapper,
-                this.props.backgroundColor ? { backgroundColor: this.props.backgroundColor } : null,
+                { backgroundColor: this.props.backgroundColor ? this.props.backgroundColor : 'white' },
               ]}>
               {this.props.children}
             </View>

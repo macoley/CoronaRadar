@@ -18,7 +18,7 @@ export default class SplashScreen extends PureComponent<IProps> {
   public render() {
     return (
       <FullScreenWrapper backgroundColor={'#121B74'}>
-        <StatusBar hidden={false} barStyle={'light-content'} backgroundColor={'transparent'} translucent={true} />
+        <StatusBar hidden={false} barStyle={'light-content'} backgroundColor={'#121B74'} translucent={true} />
         <View style={styles.container}>
           <Image style={styles.image} source={Images.logo} />
         </View>

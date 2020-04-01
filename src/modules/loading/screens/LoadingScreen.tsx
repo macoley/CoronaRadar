@@ -1,10 +1,18 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 
-import { PulseIndicator, WaveIndicator } from 'react-native-indicators';
+import { PulseIndicator } from 'react-native-indicators';
 import FullScreenWrapper from '../../welcome/organisms/FullScreenWrapper';
 
 export default class LoadingScreen extends PureComponent {
+  public componentDidMount() {
+    StatusBar.setBarStyle('dark-content');
+  }
+
+  public componentWillUnmount() {
+    StatusBar.setBarStyle('light-content');
+  }
+
   public render() {
     return (
       <FullScreenWrapper>
