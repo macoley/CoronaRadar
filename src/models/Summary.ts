@@ -17,6 +17,7 @@ export class Summary {
   public readonly recovered!: number;
 
   // active = confirmed - (recovered + deaths)
+  @Expose()
   public get active() {
     return this.confirmed - this.deaths - this.recovered;
   }

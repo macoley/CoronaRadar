@@ -6,6 +6,8 @@ export class DataBranch {
   public readonly countriesLastFetchDate?: Date;
   public readonly countries: Country[];
 
+  public readonly total?: Summary;
+
   public readonly summaryLastFetchDate?: Date;
   public readonly summary: Summary[];
   public readonly summarySorted: Summary[];
@@ -18,6 +20,7 @@ export class DataBranch {
   constructor(
     countriesLastFetchDate: Date,
     countries: Country[],
+    total: Summary,
     summaryLastFetchDate: Date,
     summary: Summary[],
     summarySorted: Summary[],
@@ -27,6 +30,7 @@ export class DataBranch {
   ) {
     this.countriesLastFetchDate = countriesLastFetchDate;
     this.countries = countries;
+    this.total = total;
     this.summaryLastFetchDate = summaryLastFetchDate;
     this.summary = summary;
     this.summarySorted = summarySorted;

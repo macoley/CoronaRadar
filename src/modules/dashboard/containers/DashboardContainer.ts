@@ -9,6 +9,7 @@ function mapState({ dataBranch }: StoreState) {
   return {
     summary: dataBranch.summarySorted,
     liveCountry: dataBranch.liveCountry!,
+    total: dataBranch.total,
   };
 }
 

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View, StatusBar } from 'react-native';
 
 import { Images } from '../../../resources';
 import FullScreenWrapper from '../../welcome/organisms/FullScreenWrapper';
@@ -17,7 +17,8 @@ export default class SplashScreen extends PureComponent<IProps> {
 
   public render() {
     return (
-      <FullScreenWrapper>
+      <FullScreenWrapper backgroundColor={'#121B74'}>
+        <StatusBar hidden={false} barStyle={'light-content'} backgroundColor={'transparent'} translucent={true} />
         <View style={styles.container}>
           <Image style={styles.image} source={Images.logo} />
         </View>
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   },
   image: {
     alignSelf: 'center',
-    height: 72,
-    width: 72,
+    height: 120,
+    width: 95,
   },
 });

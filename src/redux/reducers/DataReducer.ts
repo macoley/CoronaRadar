@@ -1,6 +1,7 @@
 import { ActionTypes } from '../actions/Constants';
 import { Action } from '../store/Store';
 import { DataBranch } from '../branches';
+import { Summary } from '../../models/Summary';
 
 const INITIAL_STATE: DataBranch = {
   countries: [],
@@ -13,14 +14,25 @@ export const DataReducer = (state: DataBranch = INITIAL_STATE, action: Action): 
     case ActionTypes.CountriesSuccess:
       return { ...state, countries: action.payload.countries, countriesLastFetchDate: new Date() };
     case ActionTypes.SummarySuccess:
-      const nonEmpty = action.payload.summaries.filter(summary => summary.country);
-      const sorted = nonEmpty.sort((a, b) => b.confirmed - a.confirmed);
+      const nonEmpty: Summary[] = action.payload.summaries.filter(summary => summary.country);
+      const sorted: Summary[] = nonEmpty.sort((a, b) => b.confirmed - a.confirmed);
+
+      let totalConfirmed = 0;
+      let totalDeaths = 0;
+      let totalRecovered = 0;
+
+      nonEmpty.forEach(country => {
+        totalConfirmed += country.confirmed;
+        totalDeaths += country.deaths;
+        totalRecovered += country.recovered;
+      });
 
       return {
         ...state,
         summary: nonEmpty,
         summarySorted: sorted,
         summaryLastFetchDate: new Date(),
+        total: new Summary('total', 'total', totalConfirmed, totalDeaths, totalRecovered),
       };
     case ActionTypes.LiveCountrySuccess:
       return { ...state, liveCountry: action.payload.liveRaport, liveCountryLastFetchDate: new Date() };

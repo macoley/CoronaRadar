@@ -27,6 +27,7 @@ interface IProps {
   navigation: any;
   summary: Summary[];
   liveCountry: Summary;
+  total: Summary;
   moveToChangeLocationScreen: () => void;
 }
 
@@ -40,6 +41,14 @@ export default class DashboardScreen extends PureComponent<IProps> {
   }
 
   public render() {
+    const liveActive =
+      (this.props.liveCountry?.confirmed ?? 0) -
+      (this.props.liveCountry?.deaths ?? 0) -
+      (this.props.liveCountry?.recovered ?? 0);
+
+    const totalActive =
+      (this.props.total?.confirmed ?? 0) - (this.props.total?.deaths ?? 0) - (this.props.total?.recovered ?? 0);
+
     return (
       <FullScreenWrapper>
         <View style={styles.locationWidget}>
@@ -70,7 +79,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
               <Image resizeMode={'center'} source={Images.iconMedicine} />
               <Text style={[styles.textBold, styles.textDark]}>{placeholder6}</Text>
               <View style={styles.boxAmount}>
-                <Text style={[styles.textNormal, styles.textDark]}>{this.props.liveCountry?.active ?? '-'}</Text>
+                <Text style={[styles.textNormal, styles.textDark]}>{liveActive === 0 ? '-' : liveActive}</Text>
               </View>
             </View>
             <View style={styles.box}>
@@ -107,7 +116,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
                   <Text style={[styles.textBold, styles.textRed]}>{placeholder10}</Text>
                 </View>
                 <View style={styles.boxAmount}>
-                  <Text style={[styles.textNormal, styles.textDark]}>{placeholder5}</Text>
+                  <Text style={[styles.textNormal, styles.textDark]}>{this.props.total?.confirmed ?? '-'}</Text>
                 </View>
               </View>
               <View style={[styles.box, styles.boxWide]}>
@@ -116,7 +125,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
                   <Text style={[styles.textBold, styles.textRed]}>{placeholder6}</Text>
                 </View>
                 <View style={styles.boxAmount}>
-                  <Text style={[styles.textNormal, styles.textDark]}>{placeholder5}</Text>
+                  <Text style={[styles.textNormal, styles.textDark]}>{totalActive === 0 ? '-' : totalActive}</Text>
                 </View>
               </View>
             </View>
@@ -127,7 +136,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
                   <Text style={[styles.textBold, styles.textRed]}>{placeholder7}</Text>
                 </View>
                 <View style={styles.boxAmount}>
-                  <Text style={[styles.textNormal, styles.textDark]}>{placeholder5}</Text>
+                  <Text style={[styles.textNormal, styles.textDark]}>{this.props.total?.recovered ?? '-'}</Text>
                 </View>
               </View>
               <View style={[styles.box, styles.boxWide]}>
@@ -136,7 +145,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
                   <Text style={[styles.textBold, styles.textRed]}>{placeholder8}</Text>
                 </View>
                 <View style={styles.boxAmount}>
-                  <Text style={[styles.textNormal, styles.textDark]}>{placeholder5}</Text>
+                  <Text style={[styles.textNormal, styles.textDark]}>{this.props.total?.deaths ?? '-'}</Text>
                 </View>
               </View>
             </View>

@@ -3,7 +3,11 @@ import { KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StatusBar, St
 
 import { Colors } from '../../../resources';
 
-export default class FullScreenWrapper extends PureComponent {
+interface IProps {
+  backgroundColor?: string;
+}
+
+export default class FullScreenWrapper extends PureComponent<IProps> {
   public render() {
     const keyboardBehavior = Platform.OS === 'ios' ? 'padding' : undefined;
 
@@ -12,7 +16,13 @@ export default class FullScreenWrapper extends PureComponent {
         <StatusBar hidden={false} barStyle={'dark-content'} backgroundColor={'transparent'} translucent={true} />
         <KeyboardAvoidingView style={styles.container} behavior={keyboardBehavior}>
           <SafeAreaView style={styles.safeArea}>
-            <View style={styles.wrapper}>{this.props.children}</View>
+            <View
+              style={[
+                styles.wrapper,
+                this.props.backgroundColor ? { backgroundColor: this.props.backgroundColor } : null,
+              ]}>
+              {this.props.children}
+            </View>
           </SafeAreaView>
         </KeyboardAvoidingView>
       </>
