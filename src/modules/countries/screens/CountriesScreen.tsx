@@ -39,7 +39,7 @@ export default class CountriesScreen extends PureComponent<IProps> {
                 <Text style={[styles.textBold, styles.textLight]}>{this.props.summary[0].confirmed}</Text>
               </View>
             ) : null}
-            {this.props.summary.slice(1, 70).map((summary, index) => (
+            {this.props.summary.slice(1, 20).map((summary, index) => (
               <View key={index} style={styles.listRow}>
                 <Text style={[styles.textBold, styles.textDark]}>{summary.country}</Text>
                 <Text style={[styles.textBold, styles.textRed]}>{summary.confirmed}</Text>

@@ -2,6 +2,7 @@ import { action } from 'typesafe-actions';
 import { ActionTypes } from './Constants';
 import { Summary } from '../../models/Summary';
 import { Country } from '../../models/Country';
+import { store } from '../store/Store';
 
 // Countries
 export const getCountriesStart = () => action(ActionTypes.CountriesStart);
@@ -21,7 +22,11 @@ export const getLiveCountryFail = (payload: {}) => action(ActionTypes.LiveCountr
 
 // Moving
 export const moveToChangeLocationScreen = () => action(ActionTypes.ChangeLocationScreen);
-export const moveToDashboardScreen = () => action(ActionTypes.DashboardScreen);
+export const moveToDashboardScreen = () =>
+  action(ActionTypes.DashboardScreen, {
+    summaryLastFetchDate: store.getState().dataBranch.summaryLastFetchDate,
+    liveCountry: store.getState().dataBranch.liveCountry,
+  });
 
 // Chosing country
 export const chooseCountry = (payload: { countrySlug: string }) => action(ActionTypes.ChooseCountry, payload);

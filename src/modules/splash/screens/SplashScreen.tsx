@@ -2,14 +2,17 @@ import React, { PureComponent } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
 import { Images } from '../../../resources';
-import NavigationService from '../../../services/NavigationService';
 import FullScreenWrapper from '../../welcome/organisms/FullScreenWrapper';
 
-export default class SplashScreen extends PureComponent {
+interface IProps {
+  moveToDashboardScreen: () => void;
+}
+
+export default class SplashScreen extends PureComponent<IProps> {
   public componentDidMount() {
     setTimeout(() => {
-      NavigationService.navigate(NavigationService.RouteNames.WelcomeScreen);
-    }, 300);
+      this.props.moveToDashboardScreen();
+    }, 100);
   }
 
   public render() {

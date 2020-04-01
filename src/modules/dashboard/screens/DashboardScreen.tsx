@@ -27,6 +27,7 @@ interface IProps {
   navigation: any;
   summary: Summary[];
   liveCountry: Summary;
+  moveToChangeLocationScreen: () => void;
 }
 
 export default class DashboardScreen extends PureComponent<IProps> {
@@ -45,7 +46,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
           <View style={styles.wrapper}>
             <Text style={[styles.textHeader, styles.textLight]}>{placeholder1}</Text>
             <Text style={[styles.textSubheader, styles.textSpace, styles.textLight]}>
-              {this.props.liveCountry.country}
+              {this.props.liveCountry?.country ?? ''}
             </Text>
             <TouchableOpacity onPress={this.onChangeLocationPress} style={styles.anchorContainer}>
               <View style={styles.anchor}>
@@ -57,7 +58,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
               <Text style={[styles.textCaption, styles.textLight]}>{placeholder4}</Text>
               <View style={styles.comfirmedRow}>
                 <View style={styles.comfirmedAmountContainer}>
-                  <Text style={[styles.textCaption, styles.textLight]}>{this.props.liveCountry.confirmed}</Text>
+                  <Text style={[styles.textCaption, styles.textLight]}>{this.props.liveCountry?.confirmed ?? '-'}</Text>
                 </View>
                 <Image resizeMode={'center'} source={Images.iconVirus} />
               </View>
@@ -69,21 +70,21 @@ export default class DashboardScreen extends PureComponent<IProps> {
               <Image resizeMode={'center'} source={Images.iconMedicine} />
               <Text style={[styles.textBold, styles.textDark]}>{placeholder6}</Text>
               <View style={styles.boxAmount}>
-                <Text style={[styles.textNormal, styles.textDark]}>{this.props.liveCountry.active}</Text>
+                <Text style={[styles.textNormal, styles.textDark]}>{this.props.liveCountry?.active ?? '-'}</Text>
               </View>
             </View>
             <View style={styles.box}>
               <Image resizeMode={'center'} source={Images.iconHeal} />
               <Text style={[styles.textBold, styles.textDark]}>{placeholder7}</Text>
               <View style={styles.boxAmount}>
-                <Text style={[styles.textNormal, styles.textDark]}>{this.props.liveCountry.recovered}</Text>
+                <Text style={[styles.textNormal, styles.textDark]}>{this.props.liveCountry?.recovered ?? '-'}</Text>
               </View>
             </View>
             <View style={styles.box}>
               <Image resizeMode={'center'} source={Images.iconSkull} />
               <Text style={[styles.textBold, styles.textDark]}>{placeholder8}</Text>
               <View style={styles.boxAmount}>
-                <Text style={[styles.textNormal, styles.textDark]}>{this.props.liveCountry.deaths}</Text>
+                <Text style={[styles.textNormal, styles.textDark]}>{this.props.liveCountry?.deaths ?? '-'}</Text>
               </View>
             </View>
           </View>
@@ -178,7 +179,7 @@ export default class DashboardScreen extends PureComponent<IProps> {
   }
 
   private onChangeLocationPress = () => {
-    NavigationService.navigate(NavigationService.RouteNames.LocationScreen);
+    this.props.moveToChangeLocationScreen();
   };
 
   private onPressCitiesButton = () => {

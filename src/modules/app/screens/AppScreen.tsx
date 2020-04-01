@@ -24,9 +24,9 @@ export default class AppScreen extends React.PureComponent<IProps, IState> {
 
   public componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange);
-    this.props.getSummary();
-    this.props.getLiveCountry();
-    this.props.getCountries();
+    // this.props.getSummary();
+    // this.props.getLiveCountry();
+    // this.props.getCountries();
   }
 
   public componentWillUnmount() {
@@ -34,11 +34,7 @@ export default class AppScreen extends React.PureComponent<IProps, IState> {
   }
 
   public render() {
-    if (__DEV__) {
-      return <SplashNavigator ref={NavigationService.setTopLevelNavigator} />;
-    } else {
-      return <SplashNavigator ref={NavigationService.setTopLevelNavigator} />;
-    }
+    return <SplashNavigator ref={NavigationService.setTopLevelNavigator} />;
   }
 
   private handleAppStateChange = (nextState: string) => {

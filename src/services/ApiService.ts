@@ -1,6 +1,6 @@
 import { plainToClass } from 'class-transformer';
-import { from } from 'rxjs';
-import { map, tap, last, first } from 'rxjs/operators';
+import { from, of } from 'rxjs';
+import { map, tap, last, first, flatMap } from 'rxjs/operators';
 import axios from 'axios';
 import { Summary } from '../models/Summary';
 import { LiveRaport } from '../models/LiveRaport';
@@ -21,7 +21,15 @@ export const getLiveCountry = (country: string, type: string, fromDate?: Date) =
     ? `${API_URL}live/country/${country}/status/${type}/date/${fromDate.toISOString()}`
     : `${API_URL}live/country/${country}/status/${type}`;
 
+  const fallBackUrl = `${API_URL}country/${country}/status/${type}`;
+
   return from(axios.get(url)).pipe(
+    flatMap(response => {
+      if (!Array.isArray(response.data) || !response.data) {
+        return from(axios.get(fallBackUrl));
+      }
+      return of(response);
+    }),
     map(response => response.data as []),
     map(raport => plainToClass(LiveRaport, raport)),
     map(raports => raports[raports.length - 1]),

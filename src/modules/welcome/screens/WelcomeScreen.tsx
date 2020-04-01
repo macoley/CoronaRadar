@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
 import FullScreenWrapper from '../organisms/FullScreenWrapper';
 import { Images } from '../../../resources';
-import NavigationService from '../../../services/NavigationService';
 import Shadow from '../../../utilities/Shadow';
 
 const placeholder1 = 'Track the spread\nof the Coronavirus';
@@ -11,7 +10,11 @@ const placeholder13 =
   'Explore where you are at risk the most. Stay informed with the latest data about your country and the other parts of the world.';
 const placeholder14 = 'Get started';
 
-export default class WelcomeScreen extends PureComponent {
+interface IProps {
+  moveToDashboardScreen: () => void;
+}
+
+export default class WelcomeScreen extends PureComponent<IProps> {
   public render() {
     return (
       <FullScreenWrapper>
@@ -34,7 +37,7 @@ export default class WelcomeScreen extends PureComponent {
   }
 
   private onButtonPress = () => {
-    NavigationService.navigate(NavigationService.RouteNames.ChangeLocationScreen);
+    this.props.moveToDashboardScreen();
   };
 }
 
