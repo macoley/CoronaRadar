@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     backgroundColor: Colors.appBackground,
+    paddingTop: 32,
   },
   toolbarContent: {
     paddingTop: 40,

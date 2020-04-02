@@ -20,6 +20,7 @@
 		9D11A8C16C65427E99FBE12A /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651A887DFA154593B6CE9EC7 /* Lato-Medium.ttf */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		F08BACE30973040FF8E240B4 /* libPods-CoronaRadarTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA5C2339FC5633FF3C4EEFB /* libPods-CoronaRadarTests.a */; };
+		7960EDA8613A41128952C8B7 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A897B311926C449488886502 /* Lato-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		D6FE1E05887B8B2031F1C3A9 /* Pods-CoronaRadar-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaRadar-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-CoronaRadar-tvOSTests/Pods-CoronaRadar-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		A897B311926C449488886502 /* Lato-Black.ttf */ = {isa = PBXFileReference; name = "Lato-Black.ttf"; path = "../assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				651A887DFA154593B6CE9EC7 /* Lato-Medium.ttf */,
 				56E1985960934D17AC6B94D8 /* Lato-Regular.ttf */,
 				01F8F3A1609E4CBF82B79559 /* Lato-Semibold.ttf */,
+				A897B311926C449488886502 /* Lato-Black.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				9D11A8C16C65427E99FBE12A /* Lato-Medium.ttf in Resources */,
 				6675D7ABD9344794A695AA7A /* Lato-Regular.ttf in Resources */,
 				4022F83798054D4BA3D32663 /* Lato-Semibold.ttf in Resources */,
+				7960EDA8613A41128952C8B7 /* Lato-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -73,24 +73,25 @@ const styles = StyleSheet.create({
     color: '#ff0660',
   },
   textHeader: {
-    // font-family: SFProText;
+    fontFamily: 'Lato-Black',
     fontSize: 32,
     fontWeight: '900',
     lineHeight: 48,
   },
   textBold: {
-    // font-family: SFProText;
+    fontFamily: 'Lato-Bold',
     fontSize: 14,
     fontWeight: 'bold',
     lineHeight: 21,
   },
   textNormal: {
-    // font-family: SFProText;
+    fontFamily: 'Lato-Semibold',
     fontSize: 14,
     fontWeight: '600',
     lineHeight: 21,
   },
   textSubheader: {
+    fontFamily: 'Lato-Bold',
     fontSize: 24,
     fontWeight: 'bold',
     lineHeight: 36,
@@ -99,14 +100,28 @@ const styles = StyleSheet.create({
     marginTop: 18,
   },
   textMedium: {
+    fontFamily: 'Lato-Medium',
     fontSize: 16,
     fontWeight: '500',
     lineHeight: 24,
   },
   textCaption: {
+    fontFamily: 'Lato-Bold',
     fontSize: 16,
     fontWeight: 'bold',
     lineHeight: 24,
+  },
+  textButton: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 24,
+  },
+  textRegular: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 14,
+    fontWeight: 'normal',
+    lineHeight: 21,
   },
   section: {
     marginTop: 28,
