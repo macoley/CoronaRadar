@@ -15,14 +15,14 @@ export const getSummarySuccess = (payload: { summaries: Summary[] }) => action(A
 export const getSummaryFail = (payload: {}) => action(ActionTypes.SummaryFail, payload);
 
 // Live
-export const getLiveCountryStart = () => action(ActionTypes.LiveCountryStart);
+export const getLiveCountryStart = (payload: { countrySlug: string }) => action(ActionTypes.LiveCountryStart, payload);
 export const getLiveCountrySuccess = (payload: { liveRaport?: Summary }) =>
   action(ActionTypes.LiveCountrySuccess, payload);
 export const getLiveCountryFail = (payload: {}) => action(ActionTypes.LiveCountryFail, payload);
 
 // Moving
 export const moveToChangeLocationScreen = () => action(ActionTypes.ChangeLocationScreen);
-export const moveToDashboardScreen = () =>
+export const moveToDashboardScreen = (): any =>
   action(ActionTypes.DashboardScreen, {
     summaryLastFetchDate: store.getState().dataBranch.summaryLastFetchDate,
     liveCountry: store.getState().dataBranch.liveCountry,

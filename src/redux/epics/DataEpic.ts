@@ -32,8 +32,8 @@ export const liveRaportEpic = (action$: any) =>
   action$.pipe(
     filter(isOfType(ActionTypes.LiveCountryStart)),
     pluck('payload'),
-    mergeMap((_payload: {}) =>
-      getLiveCountryHelper('poland').pipe(
+    mergeMap((payload: { countrySlug: string }) =>
+      getLiveCountryHelper(payload.countrySlug).pipe(
         map(([confirmed, recovered, deaths]) =>
           actions.getLiveCountrySuccess({
             liveRaport: new Summary(confirmed.country, '', confirmed.cases, deaths.cases, recovered.cases),
@@ -76,7 +76,6 @@ export const chooseCountryEpic = (action$: any) =>
             ),
           });
         }),
-        // catchError(error => of(actions.getLiveCountryFail(error))),
         catchError(_error => of(actions.moveToChangeLocationScreen())),
       );
     }),
