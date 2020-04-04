@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Summary } from '../models/Summary';
 import { LiveRaport } from '../models/LiveRaport';
 import { Country } from '../models/Country';
+import { uniqWith, sumBy } from 'lodash';
 
 const API_URL = 'https://api.covid19api.com/';
 
@@ -16,23 +17,31 @@ export const getSummary = () => {
   );
 };
 
-export const getLiveCountry = (country: string, type: string, fromDate?: Date) => {
+export const getLiveCountry = (country: string, fromDate?: Date) => {
   const url = fromDate
-    ? `${API_URL}live/country/${country}/status/${type}/date/${fromDate.toISOString()}`
-    : `${API_URL}live/country/${country}/status/${type}`;
-
-  const fallBackUrl = `${API_URL}country/${country}/status/${type}`;
+    ? `${API_URL}live/country/${country}/status/confirmed/date/${fromDate.toISOString()}`
+    : `${API_URL}live/country/${country}/status/confirmed`;
 
   return from(axios.get(url)).pipe(
-    flatMap(response => {
-      if (!Array.isArray(response.data) || !response.data) {
-        return from(axios.get(fallBackUrl));
-      }
-      return of(response);
-    }),
     map(response => response.data as []),
     map(raport => plainToClass(LiveRaport, raport)),
-    map(raports => raports[raports.length - 1]),
+    map(raports => {
+      const firstRaport = raports[0];
+
+      let active = 0;
+      let confirmed = 0;
+      let deaths = 0;
+      let recovered = 0;
+
+      raports.forEach(raport => {
+        active += raport.active;
+        confirmed += raport.confirmed;
+        deaths += raport.deaths;
+        recovered += raport.recovered;
+      });
+
+      return new LiveRaport(firstRaport.country, firstRaport.date, confirmed, deaths, recovered, active);
+    }),
   );
 };
 

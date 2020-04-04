@@ -32,6 +32,7 @@ export default class AppScreen extends React.PureComponent<IProps, IState> {
 
   public componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange);
+    this.refreshLiveCountry();
     this.refreshInterval = setInterval(this.refreshLiveCountry, refreshRate);
   }
 

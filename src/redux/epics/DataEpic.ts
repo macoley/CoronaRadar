@@ -1,20 +1,13 @@
 import { filter, pluck, map, catchError, mergeMap } from 'rxjs/operators';
-import { isOfType, action } from 'typesafe-actions';
+import { isOfType } from 'typesafe-actions';
 
 import * as actions from '../actions';
 import { ActionTypes } from '../actions/Constants';
-import { of, combineLatest, from } from 'rxjs';
+import { of } from 'rxjs';
 import { getSummary, getLiveCountry, getCountries } from '../../services/ApiService';
 import { Summary } from '../../models/Summary';
 import NavigationService from '../../services/NavigationService';
 import { Country } from '../../models/Country';
-
-const getLiveCountryHelper = (country: string) =>
-  combineLatest([
-    getLiveCountry(country, 'confirmed'),
-    getLiveCountry(country, 'recovered'),
-    getLiveCountry(country, 'deaths'),
-  ]);
 
 export const summaryEpic = (action$: any) =>
   action$.pipe(
@@ -33,10 +26,10 @@ export const liveRaportEpic = (action$: any) =>
     filter(isOfType(ActionTypes.LiveCountryStart)),
     pluck('payload'),
     mergeMap((payload: { countrySlug: string }) =>
-      getLiveCountryHelper(payload.countrySlug).pipe(
-        map(([confirmed, recovered, deaths]) =>
+      getLiveCountry(payload.countrySlug).pipe(
+        map(raport =>
           actions.getLiveCountrySuccess({
-            liveRaport: new Summary(confirmed.country, '', confirmed.cases, deaths.cases, recovered.cases),
+            liveRaport: new Summary(raport.country, '', raport.confirmed, raport.deaths, raport.recovered),
           }),
         ),
         catchError(error => of(actions.getLiveCountryFail(error))),
@@ -63,16 +56,16 @@ export const chooseCountryEpic = (action$: any) =>
     mergeMap((payload: { countrySlug: string }) => {
       NavigationService.navigate(NavigationService.RouteNames.LoadingScreen);
 
-      return getLiveCountryHelper(payload.countrySlug).pipe(
-        map(([confirmed, recovered, deaths]) => {
+      return getLiveCountry(payload.countrySlug).pipe(
+        map(raport => {
           NavigationService.navigate(NavigationService.RouteNames.DashboardScreen);
           return actions.getLiveCountrySuccess({
             liveRaport: new Summary(
-              confirmed.country,
+              raport.country,
               payload.countrySlug,
-              confirmed.cases,
-              deaths.cases,
-              recovered.cases,
+              raport.confirmed,
+              raport.deaths,
+              raport.recovered,
             ),
           });
         }),

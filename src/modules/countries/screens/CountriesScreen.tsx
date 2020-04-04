@@ -34,14 +34,16 @@ export default class CountriesScreen extends PureComponent<IProps> {
           <View style={styles.sectionWrapper}>
             {this.props.summary ? (
               <View style={[styles.listRow, styles.listRowRed]}>
-                <Text style={[styles.textBold, styles.textLight]}>{this.props.summary[0].country}</Text>
+                <Text style={[styles.textBold, styles.textLight, styles.textWrap]}>
+                  {this.props.summary[0].country}
+                </Text>
                 <Text style={[styles.textBold, styles.textLight]}>{placeholder14}</Text>
                 <Text style={[styles.textBold, styles.textLight]}>{this.props.summary[0].confirmed}</Text>
               </View>
             ) : null}
             {this.props.summary.slice(1, 20).map((summary, index) => (
               <View key={index} style={styles.listRow}>
-                <Text style={[styles.textBold, styles.textDark]}>{summary.country}</Text>
+                <Text style={[styles.textBold, styles.textDark, styles.textWrap]}>{summary.country}</Text>
                 <Text style={[styles.textBold, styles.textRed]}>{summary.confirmed}</Text>
               </View>
             ))}
@@ -59,6 +61,10 @@ export default class CountriesScreen extends PureComponent<IProps> {
 const styles = StyleSheet.create({
   navbar: {
     marginBottom: 24,
+  },
+  textWrap: {
+    maxWidth: '35%',
+    overflow: 'hidden',
   },
   wrapper: {
     paddingHorizontal: 32,
@@ -141,6 +147,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   listRowRed: {
     backgroundColor: '#ff0660',

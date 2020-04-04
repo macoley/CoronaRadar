@@ -22,7 +22,7 @@ export const getLiveCountryFail = (payload: {}) => action(ActionTypes.LiveCountr
 
 // Moving
 export const moveToChangeLocationScreen = () => action(ActionTypes.ChangeLocationScreen);
-export const moveToDashboardScreen = (): any =>
+export const moveToDashboardScreen = (): { type: ActionTypes.DashboardScreen } =>
   action(ActionTypes.DashboardScreen, {
     summaryLastFetchDate: store.getState().dataBranch.summaryLastFetchDate,
     liveCountry: store.getState().dataBranch.liveCountry,

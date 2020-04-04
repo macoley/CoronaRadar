@@ -8,14 +8,14 @@ import Shadow from '../../../utilities/Shadow';
 import { Country } from '../../../models/Country';
 import { Summary } from '../../../models/Summary';
 
-const placeholder1 = 'Virus in your\nlocation';
+const placeholder1 = 'COVID-19 in your\nlocation';
 const placeholder2 = 'Poland';
 const placeholder3 = 'Change';
 const placeholder4 = 'Total comfirmed';
 const placeholder5 = '1 663';
 const placeholder6 = 'Active';
-const placeholder7 = 'Recovery';
-const placeholder8 = 'Death';
+const placeholder7 = 'Recovered';
+const placeholder8 = 'Deaths';
 const placeholder9 = 'Global statistics';
 const placeholder10 = 'Total';
 const placeholder11 = 'Live';
@@ -165,14 +165,16 @@ export default class DashboardScreen extends PureComponent<IProps> {
           <View style={styles.sectionWrapper}>
             {this.props.summary ? (
               <View style={[styles.listRow, styles.listRowRed]}>
-                <Text style={[styles.textBold, styles.textLight]}>{this.props.summary[0].country}</Text>
+                <Text style={[styles.textBold, styles.textLight, styles.textWrap]}>
+                  {this.props.summary[0].country}
+                </Text>
                 <Text style={[styles.textBold, styles.textLight]}>{placeholder14}</Text>
                 <Text style={[styles.textBold, styles.textLight]}>{this.props.summary[0].confirmed}</Text>
               </View>
             ) : null}
             {this.props.summary.slice(1, 4).map((summary, index) => (
               <View key={index} style={styles.listRow}>
-                <Text style={[styles.textBold, styles.textDark]}>{summary.country}</Text>
+                <Text style={[styles.textBold, styles.textDark, styles.textWrap]}>{summary.country}</Text>
                 <Text style={[styles.textBold, styles.textRed]}>{summary.confirmed}</Text>
               </View>
             ))}
@@ -202,6 +204,10 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 48,
     paddingTop: 48,
     marginBottom: 58,
+  },
+  textWrap: {
+    maxWidth: '35%',
+    overflow: 'hidden',
   },
   comfirmedContainer: {
     marginTop: 28,
@@ -384,6 +390,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   listRowRed: {
     backgroundColor: '#ff0660',

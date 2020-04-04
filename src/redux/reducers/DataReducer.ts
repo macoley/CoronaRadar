@@ -2,6 +2,7 @@ import { ActionTypes } from '../actions/Constants';
 import { Action } from '../store/Store';
 import { DataBranch } from '../branches';
 import { Summary } from '../../models/Summary';
+import { sortBy } from 'lodash';
 
 const INITIAL_STATE: DataBranch = {
   countries: [],
@@ -12,7 +13,8 @@ const INITIAL_STATE: DataBranch = {
 export const DataReducer = (state: DataBranch = INITIAL_STATE, action: Action): DataBranch => {
   switch (action.type) {
     case ActionTypes.CountriesSuccess:
-      return { ...state, countries: action.payload.countries, countriesLastFetchDate: new Date() };
+      const sortedCountries = sortBy(action.payload.countries, [country => country.country]);
+      return { ...state, countries: sortedCountries, countriesLastFetchDate: new Date() };
     case ActionTypes.SummarySuccess:
       const nonEmpty: Summary[] = action.payload.summaries.filter(summary => summary.country);
       const sorted: Summary[] = nonEmpty.sort((a, b) => b.confirmed - a.confirmed);

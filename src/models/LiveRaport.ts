@@ -1,11 +1,5 @@
 import { Expose } from 'class-transformer';
 
-export enum LiveRaportStatus {
-  confirmed = 'confirmed',
-  recovered = 'recovered',
-  deaths = 'deaths',
-}
-
 export class LiveRaport {
   // Country is not necessary here
   @Expose({ name: 'Country' })
@@ -14,9 +8,24 @@ export class LiveRaport {
   @Expose({ name: 'Date' })
   public readonly date!: Date;
 
-  @Expose({ name: 'Cases' })
-  public readonly cases!: number;
+  @Expose({ name: 'Confirmed' })
+  public readonly confirmed!: number;
 
-  @Expose({ name: 'Status' })
-  public readonly status!: LiveRaportStatus;
+  @Expose({ name: 'Deaths' })
+  public readonly deaths!: number;
+
+  @Expose({ name: 'Recovered' })
+  public readonly recovered!: number;
+
+  @Expose({ name: 'Active' })
+  public readonly active!: number;
+
+  constructor(country: string, date: Date, confirmed: number, deaths: number, recovered: number, active: number) {
+    this.country = country;
+    this.date = date;
+    this.confirmed = confirmed;
+    this.deaths = deaths;
+    this.recovered = recovered;
+    this.active = active;
+  }
 }
