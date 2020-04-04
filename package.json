@@ -12,7 +12,8 @@
     "test:typecheck": "tsc",
     "test:lint": "tslint --project .",
     "test:prettier": "prettier --check --config .prettierrc \"src/**/*.ts*\"",
-    "test:jest": "TEST=true jest"
+    "test:jest": "TEST=true jest",
+    "postversion": "react-native-version"
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.8.3",
@@ -65,6 +66,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "react-native-typescript-transformer": "^1.2.13",
+    "react-native-version": "^4.0.0",
     "react-test-renderer": "16.9.0",
     "ts-jest": "^24.0.2",
     "tslint-plugin-prettier": "^2.1.0",
