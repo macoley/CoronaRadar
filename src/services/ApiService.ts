@@ -1,11 +1,11 @@
 import { plainToClass } from 'class-transformer';
-import { from, of } from 'rxjs';
-import { map, tap, last, first, flatMap } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { map } from 'rxjs/operators';
 import axios from 'axios';
 import { Summary } from '../models/Summary';
 import { LiveRaport } from '../models/LiveRaport';
 import { Country } from '../models/Country';
-import { uniqWith, sumBy, isEqual } from 'lodash';
+import { uniqWith, isEqual } from 'lodash';
 
 const API_URL = 'https://api.covid19api.com/';
 
@@ -25,8 +25,8 @@ export const getLiveCountry = (country: string, fromDate?: Date) => {
   return from(axios.get(url)).pipe(
     map(response => response.data as []),
     map(raport => plainToClass(LiveRaport, raport)),
+    map(raports => raports.reverse()),
     map(raports => uniqWith(raports, (a, b) => isEqual([a.province, a.city], [b.province, b.city]))),
-    tap(console.log),
     map(raports => {
       const firstRaport = raports[0];
 
