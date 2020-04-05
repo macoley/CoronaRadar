@@ -5,6 +5,12 @@ export class LiveRaport {
   @Expose({ name: 'Country' })
   public readonly country!: string;
 
+  @Expose({ name: 'Province' })
+  public readonly province!: string;
+
+  @Expose({ name: 'City' })
+  public readonly city!: string;
+
   @Expose({ name: 'Date' })
   public readonly date!: Date;
 

@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Summary } from '../models/Summary';
 import { LiveRaport } from '../models/LiveRaport';
 import { Country } from '../models/Country';
-import { uniqWith, sumBy } from 'lodash';
+import { uniqWith, sumBy, isEqual } from 'lodash';
 
 const API_URL = 'https://api.covid19api.com/';
 
@@ -25,6 +25,8 @@ export const getLiveCountry = (country: string, fromDate?: Date) => {
   return from(axios.get(url)).pipe(
     map(response => response.data as []),
     map(raport => plainToClass(LiveRaport, raport)),
+    map(raports => uniqWith(raports, (a, b) => isEqual([a.province, a.city], [b.province, b.city]))),
+    tap(console.log),
     map(raports => {
       const firstRaport = raports[0];
 
