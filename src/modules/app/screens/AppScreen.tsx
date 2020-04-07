@@ -32,7 +32,7 @@ export default class AppScreen extends React.PureComponent<IProps, IState> {
 
   public componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange);
-    this.refreshLiveCountry();
+    this.forceRefreshLiveCountry();
     this.refreshInterval = setInterval(this.refreshLiveCountry, refreshRate);
   }
 
@@ -57,5 +57,13 @@ export default class AppScreen extends React.PureComponent<IProps, IState> {
     if (Date.now() - new Date(this.props.liveCountryLastFetchDate).getTime() > liveRate) {
       this.props.getLiveCountry(this.props.liveCountry.countrySlug);
     }
+  };
+
+  private forceRefreshLiveCountry = () => {
+    if (!this.props.liveCountry) {
+      return;
+    }
+
+    this.props.getLiveCountry(this.props.liveCountry.countrySlug);
   };
 }
